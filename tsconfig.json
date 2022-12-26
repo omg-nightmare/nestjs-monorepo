@@ -18,24 +18,18 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/jwt": [
-        "libs/jwt/src"
-      ],
-      "@app/jwt/*": [
-        "libs/jwt/src/*"
-      ],
-      "@app/bcrypt": [
-        "libs/bcrypt/src"
-      ],
-      "@app/bcrypt/*": [
-        "libs/bcrypt/src/*"
-      ],
-      "@app/logger": [
-        "libs/logger/src"
-      ],
-      "@app/logger/*": [
-        "libs/logger/src/*"
-      ]
+      "@app/jwt": ["apps/gateway/src/jwt/src"],
+      "@app/jwt/*": ["apps/gateway/src/jwt/src/*"],
+      "@app/bcrypt": ["libs/bcrypt/src"],
+      "@app/bcrypt/*": ["libs/bcrypt/src/*"],
+      "@app/logger": ["libs/logger/src"],
+      "@app/logger/*": ["libs/logger/src/*"],
+      "@app/uuid": ["libs/uuid/src"],
+      "@app/uuid/*": ["libs/uuid/src/*"],
+      "@app/errors": ["libs/errors/src"],
+      "@app/errors/*": ["libs/errors/src/*"],
+      "@app/exception-filter": ["libs/exception-filter/src"],
+      "@app/exception-filter/*": ["libs/exception-filter/src/*"]
     }
   }
 }

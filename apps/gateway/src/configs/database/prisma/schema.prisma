@@ -15,6 +15,7 @@ model User {
   email      String   @unique
   name       String?
   providerId String   @map("provider_id")
+  referrerId String   @map("referrer_id")
   role       Role     @default(USER)
   profile    Profile?
   password   String

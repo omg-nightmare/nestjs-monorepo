@@ -6,13 +6,14 @@ import {
   HttpStatus,
 } from '@nestjs/common'
 import { HttpAdapterHost } from '@nestjs/core'
-import { ErrCodeException } from 'libs/exceptionFilter/errorCodeException'
+import { errorName } from 'libs/errors'
+import { ErrCodeException } from 'libs/exception-filter'
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
   constructor(
     private readonly httpAdapterHost: HttpAdapterHost,
-    private readonly logger: LoggerService,
+    private logger: LoggerService,
   ) {}
 
   catch(exception: unknown, host: ArgumentsHost): void {
@@ -27,21 +28,25 @@ export class AllExceptionsFilter implements ExceptionFilter {
         ? exception.getStatus()
         : HttpStatus.INTERNAL_SERVER_ERROR
     const errCode =
-      exception instanceof ErrCodeException ? exception.getCode() : ''
+      exception instanceof ErrCodeException
+        ? exception.getCode()
+        : errorName.e1005000
     const errDesc =
-      exception instanceof ErrCodeException ? exception.getDescription() : ''
+      exception instanceof ErrCodeException
+        ? exception.getDescription()
+        : 'internal server error'
     const errMsg =
       exception instanceof ErrCodeException ? exception.getMessage() : ''
-    // const errStack =
-    //   exception instanceof ErrCodeException ? exception.getStack() : ''
 
     const responseBody = {
       err_code: errCode,
       err_description: errDesc,
-      err_message: errMsg,
+      err_message: errMsg || '',
       timestamp: new Date().toISOString(),
       path: httpAdapter.getRequestUrl(ctx.getRequest()),
     }
+
+    this.logger.error(responseBody)
 
     httpAdapter.reply(ctx.getResponse(), responseBody, httpStatus)
   }

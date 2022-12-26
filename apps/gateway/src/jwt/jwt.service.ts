@@ -7,8 +7,16 @@ export class JwtTokenService {
 
   compare(token: string) {
     const decode = this.jwtService.decode(token)
-
     return decode
+  }
+
+  async verify(token: string) {
+    try {
+      const verify = await this.jwtService.verifyAsync(token)
+      return verify
+    } catch (err) {
+      return null
+    }
   }
 
   async sign(userId: number, expiredIn: string): Promise<string> {

@@ -14,12 +14,12 @@ export class ErrCodeException extends Error implements IErrorCode {
   private errDesc
   private errMsg
 
-  constructor(error: errorCode) {
+  constructor(error: errorCode, msg) {
     super()
 
     this.errCode = error.code
     this.errDesc = error.description
-    this.errMsg = error.message
+    this.errMsg = msg
     this.statusCode = error.status
   }
 

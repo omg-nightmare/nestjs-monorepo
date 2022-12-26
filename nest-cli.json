@@ -5,7 +5,7 @@
   "monorepo": true,
   "root": "apps/nestjs-monorepo",
   "compilerOptions": {
-    "webpack": true,
+    "webpack": false,
     "tsConfigPath": "apps/nestjs-monorepo/tsconfig.app.json"
   },
   "projects": {
@@ -16,15 +16,6 @@
       "sourceRoot": "apps/gateway/src",
       "compilerOptions": {
         "tsConfigPath": "apps/gateway/tsconfig.app.json"
-      }
-    },
-    "jwt": {
-      "type": "library",
-      "root": "libs/jwt",
-      "entryFile": "index",
-      "sourceRoot": "libs/jwt/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/jwt/tsconfig.lib.json"
       }
     },
     "bcrypt": {
@@ -52,6 +43,24 @@
       "sourceRoot": "apps/member/src",
       "compilerOptions": {
         "tsConfigPath": "apps/member/tsconfig.app.json"
+      }
+    },
+    "errors": {
+      "type": "library",
+      "root": "libs/errors",
+      "entryFile": "index",
+      "sourceRoot": "libs/errors/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/errors/tsconfig.lib.json"
+      }
+    },
+    "exception-filter": {
+      "type": "library",
+      "root": "libs/exception-filter",
+      "entryFile": "index",
+      "sourceRoot": "libs/exception-filter/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/exception-filter/tsconfig.lib.json"
       }
     }
   }
