@@ -5,11 +5,6 @@ import { ErrCodeByName, errorName } from 'libs/errors'
 import { AuthService } from '../auth/auth.service'
 import type routes from '../routes/routes'
 import { JwtTokenService } from '../jwt/jwt.service'
-import {
-  HttpException,
-  HttpStatus,
-  UnauthorizedException,
-} from '@nestjs/common'
 
 interface IPayloadJwt {
   userId: string
